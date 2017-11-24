@@ -11,19 +11,28 @@ class LinkList extends Component {
 
   render() {
 
+
     if(this.props.loading){
       return(<div>Loading...</div>)
     }
 
     if(!this.props.loading){
       return(
-        <div>
+        <div className="card">
         {_.map(this.props.links.allLinks, ((link) => {
           return <Link key={link.id} link={link} />
         }))}
         </div>
       )
     }
+
+    if(!this.props.loading && this.props.links.error){
+      return (
+        <div>{this.props.links.error}</div>
+      )
+    }
+
+
   }
 }
                                       //a man needs a name! named queries are prttier
