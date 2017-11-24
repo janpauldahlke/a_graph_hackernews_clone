@@ -4,13 +4,13 @@ import {graphql} from 'react-apollo';
 
 import * as _ from 'lodash';
 
-import getAllLinksQuery from '../queries/getAllLinks';
+import ALL_LINKS_QUERY from '../queries/getAllLinks';
 
 
 class LinkList extends Component {
 
   render() {
-    
+
     if(this.props.loading){
       return(<div>Loading...</div>)
     }
@@ -18,8 +18,7 @@ class LinkList extends Component {
     if(!this.props.loading){
       return(
         <div>
-
-        {_.map(this.props.data.allLinks, ((link) => {
+        {_.map(this.props.links.allLinks, ((link) => {
           return <Link key={link.id} link={link} />
         }))}
         </div>
@@ -27,5 +26,5 @@ class LinkList extends Component {
     }
   }
 }
-
-export default graphql(getAllLinksQuery)(LinkList);
+                                      //a man needs a name! named queries are prttier
+export default graphql(ALL_LINKS_QUERY, {name: 'links' })(LinkList);

@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export default gql`
+const ALL_LINKS_QUERY = gql`
 query allLinks{
   allLinks{
     id,
@@ -9,3 +9,5 @@ query allLinks{
   }
 }
 `
+
+export default ALL_LINKS_QUERY;
