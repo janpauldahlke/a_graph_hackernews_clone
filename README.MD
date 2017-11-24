@@ -1,5 +1,4 @@
-##graphcool framework test
-##another hackernews clone
+##graphcool framework test creates another hackernews clone
 
 ```
 npm install -g graphcool
@@ -8,4 +7,10 @@ gc local up
 gc deploy
 ```
 
-choose dev
+choose local
+
+- remind your API access from terminal
+
+```
+create-react-app hackernews
+```
