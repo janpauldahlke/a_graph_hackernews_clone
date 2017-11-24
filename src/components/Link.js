@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 
+
 class Link extends Component {
+
+  createLinkElement(){
+
+  }
+
+
   render () {
+
     return(
       <div>
-        <div>{this.props.link.description}&nbsp;
-        <a href={this.props.link.url} target="_blank"   >{this.props.link.url}</a>
-        </div>
+        <span>{this.props.link.description}</span>&nbsp;<a href={this.props.link.url}>{this.props.link.url}</a>
       </div>
     );
   }

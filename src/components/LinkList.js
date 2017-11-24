@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 import Link from './Link';
+import {graphql} from 'react-apollo';
+
+import * as _ from 'lodash';
+
+import getAllLinksQuery from '../queries/getAllLinks';
+
 
 class LinkList extends Component {
 
   render() {
-
-    const linksToRender = [{
-      id: '1',
-      description: 'The coolest link',
-      url: 'https://www.graph.cool/docs'
-    },
-    {
-      id: '2',
-      description: 'The best client',
-      url: 'http://dev.apollodata.com'
+    
+    if(this.props.loading){
+      return(<div>Loading...</div>)
     }
-  ]
 
-  return(
-    <div>
-     {linksToRender.map(link => {
-       return <Link key={link.id} link={link} />
-     })}
-    </div>
-  )
- }
+    if(!this.props.loading){
+      return(
+        <div>
+
+        {_.map(this.props.data.allLinks, ((link) => {
+          return <Link key={link.id} link={link} />
+        }))}
+        </div>
+      )
+    }
+  }
 }
 
-export default LinkList;
+export default graphql(getAllLinksQuery)(LinkList);
