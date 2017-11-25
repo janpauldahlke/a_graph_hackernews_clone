@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
+
+import { graphql, compose} from 'react-apollo';
+
+
 import {USER_ID, AUTH_TOKEN} from '../constants';
+
+import AUTHENTICATE_USER_MUTATION from '../mutations/authenticateUser.js';
+import SIGNUP_USER_MUTATION from '../mutations/signupUser.js' ;
 
 class Login extends Component {
 
@@ -68,4 +75,9 @@ class Login extends Component {
 }
 
 
-export default Login;
+export default compose(
+  graphql(SIGNUP_USER_MUTATION, {name: 'signupUserMutation'}),
+  graphql(AUTHENTICATE_USER_MUTATION, {name : 'authenticateUserMutation'})
+)(Login);
+
+//export default Login;
