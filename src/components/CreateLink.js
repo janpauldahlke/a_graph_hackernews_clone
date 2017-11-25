@@ -4,6 +4,8 @@ import { graphql } from 'react-apollo';
 import CREATE_LINK_MUTATION from '../mutations/createLink';
 import ALL_LINKS_QUERY from '../queries/getAllLinks';
 
+import {USER_ID} from '../constants.js'
+
 class CreateLink extends Component {
 
   constructor(props){
@@ -12,7 +14,7 @@ class CreateLink extends Component {
     this.state = {
       description: '',
       url: '',
-      postedByUserId: 'cjae45pmq001x0111uvfvrlgp'
+      postedByUserId: '' //<3
     }
 
     this.createLink = this.createLink.bind(this);
@@ -31,6 +33,9 @@ class CreateLink extends Component {
 
   //useing node 8 features
   createLink = async () => {
+
+    //const userId = localStorage.getItem(USER_ID);
+
     const {description, url, postedByUserId} = this.state //es6 destructering
     await this.props.createLink({
       variables : {
@@ -44,7 +49,9 @@ class CreateLink extends Component {
 
   render(){
 
-    console.log('createProps',this.props)
+    //console.log('createProps',this.props)
+    //grab user
+    const userId = localStorage.getItem(USER_ID)
 
   return(
     <div className="card">
@@ -66,7 +73,10 @@ class CreateLink extends Component {
           <br/>
           <input
             onChange={(e) => {
-              this.setState({url: e.target.value})
+              this.setState({
+                url: e.target.value,
+                postedByUserId : userId
+              })
             }}
             value={this.state.url}
             className="form-control"
