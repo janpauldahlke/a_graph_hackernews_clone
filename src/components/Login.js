@@ -17,8 +17,33 @@ class Login extends Component {
     name: ''
   }
 
-  confirm = async () => {
-    console.log('confirm')
+  confirmLogin = async () => {
+
+    const { name, email, password} = this.state;
+
+    if(this.state.login) {
+      const result = await this.props.authenticateUserMutation({
+        variables : {
+          email,
+          password
+        }
+      })
+      const {id, token} = result.data.authenticateUser;
+      this.saveUserData(id, token)
+    }else {
+      const result = await this.props.signupUserMutation({
+        variables : {
+          name,
+          email,
+          password
+        }
+      })
+      const {id, token} = result.data.signupUser;
+      this.saveUserData(id, token)
+    }
+    this.props.history.push('/')
+
+
   }
 
   saveUserData = (id, token) => {
@@ -28,6 +53,8 @@ class Login extends Component {
 
 
   render() {
+
+    
 
     return (
       <div className="container card">
@@ -60,7 +87,7 @@ class Login extends Component {
             <div>
               <div
                   className="btn btn-success"
-                  onClick={() => this.confirm()}
+                  onClick={() => this.confirmLogin()}
                 >{this.state.login ? 'login' : 'create Account'}</div>
               &nbsp;
                 <div
