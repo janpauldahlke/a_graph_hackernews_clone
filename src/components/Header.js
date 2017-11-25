@@ -6,11 +6,12 @@ class Header extends Component {
 
   render() {
     return(
-      <div>
+      <div className="navbar" style={{background: '#a5a2a2'}}>
         <div>
           <h5>hacker news</h5>
-          <Link to="/" className="">new</Link>
-          <Link to="/create" className="">create</Link>
+          <Link to="/" className="nav-item">main</Link>
+          <span className="nav-item"> | </span>
+          <Link to="/create" className="nav-item">create</Link>
         </div>
       </div>
     )

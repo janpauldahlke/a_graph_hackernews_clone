@@ -18,7 +18,7 @@ class LinkList extends Component {
 
     if(!this.props.loading){
       return(
-        <div className="card">
+        <div className="card" style={{margin: "10px", padding: "10px"}}>
         {_.map(this.props.links.allLinks, ((link) => {
           return <Link key={link.id} link={link} />
         }))}
