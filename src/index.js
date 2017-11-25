@@ -4,6 +4,8 @@ import './styles/index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
+import { BrowserRouter } from 'react-router-dom';
+
 //add apollo related stuff
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -22,8 +24,10 @@ const client = new ApolloClient({
 //wrap app into things
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </BrowserRouter>
   , document.getElementById('root'));
 registerServiceWorker();

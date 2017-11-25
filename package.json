@@ -1,8 +1,8 @@
 {
   "name": "hacker-news-apollo",
   "version": "0.1.0",
-  "author" : "janpaulquappe",
-  "license" : "MIT",
+  "author": "janpaulquappe",
+  "license": "MIT",
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.1",
     "apollo-client": "2.0.3",
@@ -13,6 +13,8 @@
     "react": "^16.1.1",
     "react-apollo": "2.0.1",
     "react-dom": "^16.1.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17"
   },
   "scripts": {
