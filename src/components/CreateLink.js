@@ -37,9 +37,9 @@ class CreateLink extends Component {
         description,
         url,
         postedByUserId
-      },
-      refetchQueries : [{query: ALL_LINKS_QUERY}]
+      },refetchQueries : [{query: ALL_LINKS_QUERY}]
     })
+    this.props.history.push('/')
   }
 
   render(){
