@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import graphlql from 'react-apollo';
+import { graphql } from 'react-apollo';
 
 import CREATE_LINK_MUTATION from '../mutations/createLink';
+import ALL_LINKS_QUERY from '../queries/getAllLinks';
 
 class CreateLink extends Component {
 
@@ -10,11 +11,28 @@ class CreateLink extends Component {
 
     this.state = {
       description: '',
-      url: ''
+      url: '',
+      postedByUserId: 'cjae45pmq001x0111uvfvrlgp'
     }
+
+    this.createLink = this.createLink.bind(this);
+  }
+
+  createLink(){
+    this.props.mutate({
+      variables : {
+        url: this.state.url,
+        description: this.state.description,
+        postedByUserId: this.state.postedByUserId
+      },
+      refetchQueries : [{query: ALL_LINKS_QUERY}]
+    })
   }
 
   render(){
+
+    console.log('createProps',this.props)
+
   return(
     <div className="card">
       <form className="">
@@ -41,10 +59,19 @@ class CreateLink extends Component {
             className="form-control"
             />
         </form>
+
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            this.createLink();
+          }}
+          className="btn btn-lg btn-success">send</button>
     </div>
     )
   }
 }
 
 
-export default CreateLink;
+export default graphql(CREATE_LINK_MUTATION)(
+  graphql(ALL_LINKS_QUERY)(CreateLink)
+);
