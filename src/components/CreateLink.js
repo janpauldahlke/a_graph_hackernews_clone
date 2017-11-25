@@ -18,12 +18,25 @@ class CreateLink extends Component {
     this.createLink = this.createLink.bind(this);
   }
 
-  createLink(){
-    this.props.mutate({
+  // createLink(){
+  //   this.props.mutate({
+  //     variables : {
+  //       url: this.state.url,
+  //       description: this.state.description,
+  //       postedByUserId: this.state.postedByUserId
+  //     },
+  //     refetchQueries : [{query: ALL_LINKS_QUERY}]
+  //   })
+  // }
+
+  //useing node 8 features
+  createLink = async () => {
+    const {description, url, postedByUserId} = this.state //es6 destructering
+    await this.props.createLink({
       variables : {
-        url: this.state.url,
-        description: this.state.description,
-        postedByUserId: this.state.postedByUserId
+        description,
+        url,
+        postedByUserId
       },
       refetchQueries : [{query: ALL_LINKS_QUERY}]
     })
@@ -72,6 +85,6 @@ class CreateLink extends Component {
 }
 
 
-export default graphql(CREATE_LINK_MUTATION)(
+export default graphql(CREATE_LINK_MUTATION, {name: 'createLink'})(
   graphql(ALL_LINKS_QUERY)(CreateLink)
 );
