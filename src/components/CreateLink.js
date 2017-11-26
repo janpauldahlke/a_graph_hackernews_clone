@@ -14,7 +14,7 @@ class CreateLink extends Component {
     this.state = {
       description: '',
       url: '',
-      postedByUserId: '' //<3
+      postedById: '' //<3
     }
 
     this.createLink = this.createLink.bind(this);
@@ -25,12 +25,12 @@ class CreateLink extends Component {
 
     //const userId = localStorage.getItem(USER_ID);
 
-    const {description, url, postedByUserId} = this.state //es6 destructering
+    const {description, url, postedById} = this.state //es6 destructering
     await this.props.createLink({
       variables : {
         description,
         url,
-        postedByUserId
+        postedById
       },refetchQueries : [{query: ALL_LINKS_QUERY}]
     })
     this.props.history.push('/')
@@ -64,7 +64,7 @@ class CreateLink extends Component {
             onChange={(e) => {
               this.setState({
                 url: e.target.value,
-                postedByUserId : userId
+                postedById : userId
               })
             }}
             value={this.state.url}

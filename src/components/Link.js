@@ -28,8 +28,9 @@ class Link extends Component {
     })
   }
 
-
   render () {
+
+    console.log('link_props',this.props)
 
     return(
       <li className="list-group-item">
@@ -42,7 +43,7 @@ class Link extends Component {
             }}
             />
           <div>
-            <span>{/*this.props.links.votes.length*/} votes</span>&nbsp;
+            <span>{this.props.link.votes && this.props.link.votes.length > 0 ? this.props.link.votes.length : 0} votes</span>&nbsp;
             <span>posted by {this.props.link.postedBy ? this.props.link.postedBy.name : 'Unknow'} {timeDifferenceForDate(this.props.link.createdAt)}</span>
           </div>
       </li>
