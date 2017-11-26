@@ -4,8 +4,19 @@ const ALL_LINKS_QUERY = gql`
 query allLinks{
   allLinks{
     id,
+    createdAt,
     description,
-    url
+    url,
+    postedBy {
+      id,
+      name
+    }
+    votes {
+      id,
+      user {
+        id
+      }
+    }
   }
 }
 `
