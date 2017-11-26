@@ -20,17 +20,6 @@ class CreateLink extends Component {
     this.createLink = this.createLink.bind(this);
   }
 
-  // createLink(){
-  //   this.props.mutate({
-  //     variables : {
-  //       url: this.state.url,
-  //       description: this.state.description,
-  //       postedByUserId: this.state.postedByUserId
-  //     },
-  //     refetchQueries : [{query: ALL_LINKS_QUERY}]
-  //   })
-  // }
-
   //useing node 8 features
   createLink = async () => {
 
