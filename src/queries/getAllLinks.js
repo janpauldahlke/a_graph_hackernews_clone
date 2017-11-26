@@ -7,13 +7,16 @@ query allLinks{
     createdAt,
     description,
     url,
-    postedBy {
-      id,
-      name
-    }
     votes {
       id,
       user {
+        id
+      }
+    },
+    postedBy {
+      id,
+      name,
+      votes {
         id
       }
     }

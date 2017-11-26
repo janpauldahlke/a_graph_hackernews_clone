@@ -17,21 +17,30 @@ class CreateLink extends Component {
       postedById: '' //<3
     }
 
-    this.createLink = this.createLink.bind(this);
+    //this.createLink = this.createLink.bind(this);
   }
+
+
 
   //useing node 8 features
   createLink = async () => {
-
-    //const userId = localStorage.getItem(USER_ID);
 
     const {description, url, postedById} = this.state //es6 destructering
     await this.props.createLink({
       variables : {
         description,
         url,
-        postedById
-      },refetchQueries : [{query: ALL_LINKS_QUERY}]
+        postedById,
+      },
+      // update: (store, { data: { createLink } }) => {
+      //   const data = store.readQuery({ query: ALL_LINKS_QUERY })
+      //   data.allLinks.splice(0,0,createLink)
+      //   store.writeQuery({
+      //     query: ALL_LINKS_QUERY,
+      //     data,
+      //   })
+      // }
+      refetchQueries : [{query: ALL_LINKS_QUERY}]
     })
     this.props.history.push('/')
   }

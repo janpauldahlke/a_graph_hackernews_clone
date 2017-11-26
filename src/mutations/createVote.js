@@ -8,8 +8,11 @@ mutation CreateVoteMutation($userId: ID!, $linkId: ID!) {
       id
       link {
         postedBy {
-          id
-        }
+          id,
+          votes {
+              id
+          }
+        },
         votes {
           id
           user {
@@ -18,7 +21,10 @@ mutation CreateVoteMutation($userId: ID!, $linkId: ID!) {
         }
       }
       user {
-        id
+        id,
+        votes {
+          id
+        }
       }
     }
   }
