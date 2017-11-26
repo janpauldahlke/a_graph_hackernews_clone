@@ -15,10 +15,16 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 //point to API, the sticky end!
 const httpLink = new HttpLink({uri: 'http://localhost:60000/simple/v1/cjadthxsv0004011107e6fpnm'});
 
+//this might have been missing fpr update
+//dosc here // https://www.apollographql.com/docs/react/features/cache-updates.html
+const cache = new InMemoryCache({
+  dataIdFromObject: o => o.id
+});
+
 //prepare client
 const client = new ApolloClient({
   link: httpLink,
-  cache : new InMemoryCache()
+  cache //es6 here
 });
 
 //wrap app into things
