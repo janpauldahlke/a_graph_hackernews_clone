@@ -11,9 +11,9 @@ class Link extends Component {
   render () {
 
     return(
-      <div>
+      <li className="list-group-item">
         <span>{this.props.link.description}</span>&nbsp;<a href={this.props.link.url}>{this.props.link.url}</a>
-      </div>
+      </li>
     );
   }
 }
