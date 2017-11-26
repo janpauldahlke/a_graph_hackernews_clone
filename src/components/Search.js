@@ -31,17 +31,21 @@ class Search extends Component {
       <div>
         <div>
             Search:
+
+            <form
+              onSubmit={(e)=> {
+                e.preventDefault();
+                this.executeSearch();
+              }}
+              >
             <input
               className="form-control"
               type="text"
               onChange={(e) => this.setState({
                 searchText : e.target.value
               })}
-              onSubmit={(e) => {
-                e.preventDefault();
-                this.executeSearch();
-              }}
               />
+            </form>
             <button
               className="btn btn-success"
               onClick={(e) => {

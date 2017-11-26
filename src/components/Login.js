@@ -42,8 +42,6 @@ class Login extends Component {
       this.saveUserData(id, token)
     }
     this.props.history.push('/')
-
-
   }
 
   saveUserData = (id, token) => {
@@ -54,36 +52,43 @@ class Login extends Component {
 
   render() {
 
-    
-
     return (
       <div className="container card">
         <h4>{this.state.login ? 'Login' : 'Sign Up'}</h4>
-        <div>
-          {!this.state.login && (
-            <input
-              value={this.state.name}
-              onChange={(e) => this.setState({name: e.target.value})}
-              type="text"
-              placeholder='Your name'
-              className="form-control"
-              />
-          )}
-          <input
-              value={this.state.email}
-              onChange={(e) => { this.setState({email: e.target.value})}}
-              type="text"
-              placeholder='Your email address'
-              className="form-control"
-            />
-            <input
-                value={this.state.password}
-                onChange={(e) => { this.setState({password: e.target.value})}}
+          <div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                this.confirmLogin();
+              }}
+              >
+            {!this.state.login && (
+              <input
+                value={this.state.name}
+                onChange={(e) => this.setState({name: e.target.value})}
                 type="text"
-                placeholder='Choose a safe password'
+                placeholder='Your name'
+                className="form-control"
+                />
+            )}
+            <input
+                value={this.state.email}
+                onChange={(e) => { this.setState({email: e.target.value})}}
+                type="text"
+                placeholder='Your email address'
                 className="form-control"
               />
-          </div>
+              <input
+                  value={this.state.password}
+                  onChange={(e) => { this.setState({password: e.target.value})}}
+                  type="text"
+                  placeholder='Choose a safe password'
+                  className="form-control"
+                />
+
+            </form>
+            </div>
+
             <div>
               <div
                   className="btn btn-success"
@@ -94,6 +99,7 @@ class Login extends Component {
                   className="btn btn-success"
                   onClick={() => this.setState({ login: !this.state.login})}
                   >{this.state.login ? 'need to create an account?' : 'already have an account?'}</div>
+
             </div>
         </div>
 

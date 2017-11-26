@@ -14,10 +14,10 @@ class Header extends Component {
       <div className="navbar" style={{background: '#a5a2a2'}}>
         <div className="container">
           <h5>hacker news</h5>
-          <Link to="/" className="nav-item">main</Link>
-          <span className="nav-item"> | </span>
           {userId && (
-            <div>
+            <div style={{}}>
+              <Link to="/" className="nav-item">main</Link>
+              <span className="nav-item"> | </span>
               <Link to="/create" className="nav-item">create</Link>
               <span className="nav-item"> | </span>
               <Link to="/search" className="navitem">search</Link>
@@ -27,11 +27,12 @@ class Header extends Component {
 
           {userId ?
             <div
-              className=""
+              className="nav-item float-right"
+              style={{cursor : 'pointer'}}
               onClick={() => {
                 localStorage.removeItem(USER_ID);
                 localStorage.removeItem(AUTH_TOKEN);
-                this.props.history.push('/new/1')
+                this.props.history.push('/')
               }}
               >Logout</div>
               :

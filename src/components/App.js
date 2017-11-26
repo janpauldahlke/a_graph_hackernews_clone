@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router';
 import '../styles/App.css';
 
+import { USER_ID } from '../constants.js'
+
 import CreateLink from './CreateLink';
 import LinkList from './LinkList';
 import Header from './Header';
@@ -11,6 +13,10 @@ import Search from './Search';
 
 class App extends Component {
   render() {
+
+    const userId = localStorage.getItem(USER_ID)
+
+
     return (
       <div className="container">
         <Header />
@@ -22,6 +28,16 @@ class App extends Component {
             <Route exact path="/search" component={Search} />
           </Switch>
         </div>
+
+
+        {(!userId && !window.location.pathname.includes('/login')) && (
+
+          <div
+            className="card"
+            style={{margin: "10px", padding: "10px"}}
+            >this is the brave new world, wanna read and nonsense stuff? login or create an account</div>
+        )}
+
       </div>
     );
   }

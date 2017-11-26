@@ -49,7 +49,6 @@ class Link extends Component {
         <span>{this.props.link.description}</span>&nbsp;
         <a href={this.props.link.url}>{this.props.link.url}</a>&nbsp;
           <IconLike
-
             onClick={() => {
               this.voteForLink()
             }}
