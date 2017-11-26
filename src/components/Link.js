@@ -19,8 +19,10 @@ class Link extends Component {
               /*https://stackoverflow.com/questions/28268835/react-onclick-event-on-component*/
             }}
             />
-          <div>{/*this.props.links.votes.length*/} votes</div>
-          <div>by {this.props.link.postedBy ? this.props.link.postedBy.name : 'Unknow'} {timeDifferenceForDate(this.props.link.createdAt)}</div>
+          <div>
+            <span>{/*this.props.links.votes.length*/} votes</span>&nbsp;
+            <span>posted by {this.props.link.postedBy ? this.props.link.postedBy.name : 'Unknow'} {timeDifferenceForDate(this.props.link.createdAt)}</span>
+          </div>
       </li>
     );
   }
