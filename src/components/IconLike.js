@@ -4,7 +4,9 @@ class IconLike extends Component {
 
   render(){
     return(
-      <div className="float-right" style={{width: '32px', height: '32px', display: 'inline-block'}}>
+      <div
+        onClick={this.props.onClick}
+        className="float-right" style={{width: '32px', height: '32px', display: 'inline-block'}}>
       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"x="0px" y="0px"
       	 viewBox="0 0 484.4 484.4">
       <g>
