@@ -5,25 +5,33 @@ import {graphql} from 'react-apollo';
 import * as _ from 'lodash';
 
 import ALL_LINKS_QUERY from '../queries/getAllLinks';
-
+import {USER_ID} from '../constants.js'
 
 class LinkList extends Component {
 
   render() {
 
+    const userId = localStorage.getItem(USER_ID)
 
     if(this.props.loading){
       return(<div>Loading...</div>)
     }
 
-    if(!this.props.loading){
-      return(
+    if(!this.props.loading && userId){
+
+      return (
         <div className="card" style={{margin: "10px", padding: "10px"}}>
         {_.map(this.props.links.allLinks, ((link) => {
           return <Link key={link.id} link={link} />
         }))}
         </div>
-      )
+        )
+      }
+
+    if(!this.props.loading && !userId) {
+        return(
+          <div></div>
+        );
     }
 
     if(!this.props.loading && this.props.links.error){
