@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import IconLike from './IconLike.js'
-import timeDifferenceForDate from '../util/timeDifference.js';
+import {timeDifferenceForDate} from '../util/timeDifference.js';
 
 
 class Link extends Component {
@@ -19,6 +19,8 @@ class Link extends Component {
               /*https://stackoverflow.com/questions/28268835/react-onclick-event-on-component*/
             }}
             />
+          <div>{/*this.props.links.votes.length*/} votes</div>
+          <div>by {this.props.link.postedBy ? this.props.link.postedBy.name : 'Unknow'} {timeDifferenceForDate(this.props.link.createdAt)}</div>
       </li>
     );
   }
