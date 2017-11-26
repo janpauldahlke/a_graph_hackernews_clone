@@ -20,6 +20,8 @@ class Header extends Component {
             <div>
               <Link to="/create" className="nav-item">create</Link>
               <span className="nav-item"> | </span>
+              <Link to="/search" className="navitem">search</Link>
+              <span className="nav-item"> | </span>
             </div>
           )}
 
