@@ -17,6 +17,7 @@ const httpLink = new HttpLink({uri: 'http://localhost:60000/simple/v1/cjadthxsv0
 
 //this might have been missing fpr update
 //dosc here // https://www.apollographql.com/docs/react/features/cache-updates.html
+//
 const cache = new InMemoryCache({
   dataIdFromObject: o => o.id
 });
