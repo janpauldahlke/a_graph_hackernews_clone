@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import '../styles/App.css';
 
 import { USER_ID } from '../constants.js'
@@ -22,10 +22,13 @@ class App extends Component {
         <Header />
         <div>
           <Switch>
+
             <Route exact path="/" component={LinkList} />
             <Route exact path="/create" component={CreateLink} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/search" component={Search} />
+            <Route exact path="/top" component={LinkList} />
+            <Route exact path="/new/:page" component={LinkList} />
           </Switch>
         </div>
 
