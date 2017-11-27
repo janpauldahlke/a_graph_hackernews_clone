@@ -21,10 +21,7 @@ mutation CreateVoteMutation($userId: ID!, $linkId: ID!) {
         }
       }
       user {
-        id,
-        votes {
-          id
-        }
+        id
       }
     }
   }

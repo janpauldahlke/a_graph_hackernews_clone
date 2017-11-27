@@ -22,6 +22,9 @@ const cache = new InMemoryCache({
   dataIdFromObject: o => o.id
 });
 
+//show your cache hole
+//console.log('cache from index', cache)
+
 //prepare client
 const client = new ApolloClient({
   link: httpLink,
@@ -31,6 +34,7 @@ const client = new ApolloClient({
 //wrap app into things
 
 ReactDOM.render(
+
   <BrowserRouter>
     <ApolloProvider client={client}>
       <App />

@@ -11,17 +11,13 @@ class LinkList extends Component {
 
   //https://www.howtographql.com/react-apollo/6-more-mutations-and-updating-the-store/
 
-  updateCacheAfterVote = (store, createVoteMutation, linkId) => {
-
-    //console.log('updateCacheAfterVote',this)
-
-    const data = store.readQuery({query: ALL_LINKS_QUERY})
-    //console.log('const data', data)
-    const votedLink = data.allLinks.find(link => link.id === linkId)
-    //console.log('const votedLink', votedLink);
-    votedLink.votes = createVoteMutation.link.voterIds;
-    store.writeQuery({query: ALL_LINKS_QUERY, data})
-  }
+  // updateCacheAfterVote = (store, createVoteMutation, linkId) => {
+  //
+  //   const data = store.readQuery({query: ALL_LINKS_QUERY})
+  //   const votedLink = data.allLinks.find(link => link.id === linkId)
+  //   votedLink.votes = this.props.link.votes.length;
+  //   store.writeQuery({query: ALL_LINKS_QUERY, data})
+  // }
 
   render() {
 
@@ -33,14 +29,12 @@ class LinkList extends Component {
 
     if(!this.props.loading && userId){
 
-      //console.log('renderProps_linklist', this.props)
-
       return (
         <div className="card" style={{margin: "10px", padding: "10px"}}>
         {_.map(this.props.links.allLinks, ((link, index) => {
           return <Link
             key={link.id}
-            updateStoreAfterVote={this.updateCacheAfterVote}
+
             link={link}
             index={index}
             />
@@ -60,8 +54,6 @@ class LinkList extends Component {
         <div>{this.props.links.error}</div>
       )
     }
-
-
   }
 }
                                       //a man needs a name! named queries are prttier

@@ -25,17 +25,22 @@ class Link extends Component {
     //const votes = this.props.link.votes;
 
     //console.log('log votes', votes, this.props.link.votes)
-
+    //console.log('link, createVoteMutation', this.props)
     await this.props.createVoteMutation({
+
       variables : {
         userId,
         linkId,
       },
+      //on trying to solve the cache problem again
       refetchQueries : [{query: ALL_LINKS_QUERY}]
-    //   ,
-    //   update: (store, { data: { createVoteMutation } }) => {
-    //     this.props.updateStoreAfterVote(store, createVoteMutation, linkId)
-    //   }
+      //)
+
+
+      // ,
+      // update: (store, { data: { createVoteMutation } }) => {
+      //   this.props.updateStoreAfterVote(store, createVoteMutation, linkId)
+      // }
     })
   }
 
@@ -45,7 +50,7 @@ class Link extends Component {
     //console.log('link_props',this.props)
 
     return(
-      <li className="list-group-item">
+      <li className="list-group-item link-item">
         <span>{this.props.link.description}</span>&nbsp;
         <a href={this.props.link.url}>{this.props.link.url}</a>&nbsp;
           <IconLike

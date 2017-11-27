@@ -13,10 +13,7 @@ mutation createLinkMutation($description: String!, $url: String!, $postedById: I
      description
      postedBy {
        id
-       name,
-       votes {
-         id
-       }
+       name
      },
      votes {
        id

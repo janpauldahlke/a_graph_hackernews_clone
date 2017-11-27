@@ -41,3 +41,7 @@ input {
   cursor: pointer;
   max-width: 250px;
 }
+
+.link-item:hover{
+  background: #a4a2a2;
+}
